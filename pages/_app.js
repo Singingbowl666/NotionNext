@@ -12,6 +12,7 @@ import { getBaseLayoutByTheme } from '@/themes/theme'
 import { useRouter } from 'next/router'
 import { useCallback, useMemo } from 'react'
 import { getQueryParam } from '../lib/utils'
+import DynamicBackground from '@/components/DynamicBackground' // <--- 1. 引入组件
 
 // 各种扩展插件 这个要阻塞引入
 import BLOG from '@/blog.config'
@@ -63,6 +64,9 @@ const MyApp = ({ Component, pageProps }) => {
   )
   return (
     <>
+      {/* 2. 注入动态背景 */}
+      <DynamicBackground />
+      
       {enableClerk ? (
         <ClerkProvider localization={zhCN}>{content}</ClerkProvider>
       ) : (
